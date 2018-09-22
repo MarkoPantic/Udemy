@@ -1,30 +1,30 @@
-// var Person = function(name, yearOfBirth, job) {
-//     this.name = name;
-//     this. yearOfBirth = yearOfBirth;
-//     this.job = job;
-// }
+var Person = function(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+}
 
-// var john = new Person('john', 1990, 'developer');
-// var mark = new Person('Mark', 1948, 'retired');
-
-
-// Person.prototype.calculateAge = function () {
-//     console.log(2018 - this.yearOfBirth)
-// }
-
-// Person.prototype.lastName = 'Smith'
+var john = new Person('john', 1990, 'developer');
+var mark = new Person('Mark', 1948, 'retired');
 
 
-// john.calculateAge();
+Person.prototype.calculateAge = function () {
+    console.log(2018 - this.yearOfBirth)
+}
+
+Person.prototype.lastName = 'Smith'
 
 
-// console.log(john.lastName)
-// console.log(mark);
-// var arr = [1, 2, 3];
+john.calculateAge();
 
-// Array.prototype.clgFirst = function () {
-//     console.log(this[0]);
-// }
+
+console.log(john.lastName)
+console.log(mark);
+var arr = [1, 2, 3];
+
+Array.prototype.clgFirst = function () {
+    console.log(this[0]);
+}
 
 
 /**
