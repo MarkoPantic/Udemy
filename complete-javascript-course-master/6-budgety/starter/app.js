@@ -38,9 +38,9 @@ var budgetController = (function () {
 
 
             //Create new item
-            if(type == 'expense'){
+            if (type == 'expense') {
                 newItem = new Expense(id, des, val);
-            } else if(type == 'income'){
+            } else if (type == 'income') {
                 newItem = new Income(id, des, val);
             }
 
@@ -68,7 +68,10 @@ var UIController = (function () {
         inputType: '.add__type',
         inputDescription: '.add__description',
         inputValue: '.add__value',
-        inputButton: '.add__btn'
+        inputButton: '.add__btn',
+        // incomeContainer: '.income__list',
+        // expenseContainer: '.expense__list',
+
     }
 
     return {
@@ -76,9 +79,55 @@ var UIController = (function () {
             return {
                 type: document.querySelector(DOMstrings.inputType).value, // income || expense
                 description: document.querySelector(DOMstrings.inputDescription).value,
-                value: document.querySelector(DOMstrings.inputValue).value
+                value: parseFloat(document.querySelector(DOMstrings.inputValue).value)
+            }
+
+        },
+
+        addListItem: function (obj, type) {
+
+            //create HTML string with placeholder text
+
+            var html, newHtml, element;
+
+
+            element = '.' + type + '__list';
+
+            if(type == 'income'){
+
+                html = '<div class="item clearfix" id="income-%id%"><div class="item__description" >%description%</div ><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"<button class="item__delete"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+            } else if(type == 'expense'){
+
+                html = ' <div class="item clearfix" id="expense-%id%"><div class="item__description" >%description%</div ><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete"><i class="ion-ios-close-outline"></i></button></div></div></div>'
             }
             
+            //Replace placeholder text with actual data
+
+            newHtml = html.replace('%id%', obj.id);
+            newHtml = newHtml.replace('%description%', obj.description);
+            newHtml = newHtml.replace('%value%', obj.value);
+
+
+            //Insert
+
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
+
+        },
+
+        clearFields: function () {
+            
+            var fields, fieldsArr;
+
+            fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
+
+            fieldsArr = Array.prototype.slice.call(fields);
+
+            fieldsArr.forEach(function (current) {
+                current.value = '';
+            });
+
+            fieldsArr[0].focus()
+
         },
 
         getDOMstrings: function () {
@@ -92,7 +141,7 @@ var UIController = (function () {
 
 var controller = (function (budgetCtrl, UIctrl) {
 
-    var setEventListeners = function() {
+    var setEventListeners = function () {
 
         var dom = UIctrl.getDOMstrings();
         document.querySelector(dom.inputButton).addEventListener('click', ctrlAddItem)
@@ -108,21 +157,37 @@ var controller = (function (budgetCtrl, UIctrl) {
         })
     }
 
+    var updateBudget = function () {
+        
+
+
+    }
+
     var ctrlAddItem = function () {
 
         var input, newItem;
         //Get input data
-        input = UIController.getInput()
+        input = UIController.getInput();
 
-        //Add idem to the controller
+        if(input.description !== '' && !isNaN(input.value) && input.value > 0){
 
-        newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+            //Add idem to the controller
+    
+            newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+    
+            //Generate item from UICOntroller
+    
+            UIctrl.addListItem(newItem, input.type);
+    
+            UIctrl.clearFields();
+    
+            updateBudget();
+        }
 
 
-        
     }
 
-   
+
 
     return {
         init: function () {
@@ -130,7 +195,7 @@ var controller = (function (budgetCtrl, UIctrl) {
             setEventListeners();
         }
     }
-    
+
 
 })(budgetController, UIController)
 
