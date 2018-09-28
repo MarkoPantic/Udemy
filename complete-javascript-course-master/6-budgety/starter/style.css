@@ -200,7 +200,7 @@ h2 {
 }
 
 .icome__title { color: #28B9B5; }
-.expenses__title { color: #FF5049; }
+.expense__title { color: #FF5049; }
 
 .item {
     padding: 13px;
@@ -236,9 +236,9 @@ h2 {
     color: #28B9B5;
 }
 
-.expenses .item__value,
-.expenses .item__percentage,
-.expenses .item__delete {
+.expense .item__value,
+.expense .item__percentage,
+.expense .item__delete {
     color: #FF5049;
 }
 
