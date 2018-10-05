@@ -168,5 +168,105 @@
 // console.log(age, retirement);
 
 
-const boxes = document.querySelectorAll('.box');
+// const boxes = document.querySelectorAll('.box');
 
+
+
+// const boxesArray6 = Array.from(boxes);
+
+// boxesArray6.forEach(cur => cur.style.backgroundColor = 'dodgerblue');
+
+// for(const cur of boxesArray6){
+
+//     cur.className.includes('blue') ? true : cur.textContent = 'I changed to blue pozz'
+   
+// }
+
+
+// const ages = [12, 19, 8 ,21, 14, 18]
+
+
+// console.log(ages.findIndex(cur => cur >= 18));
+
+// console.log(ages.find(cur => cur >= 18));
+
+
+// function addFourAges(a, b, c, d) {
+//     return a + b + c + d;
+// }
+
+// var sum1 = addFourAges(18, 17, 16, 15)
+
+// console.log(sum1);
+// const arr = [18, 17, 16, 15]
+
+
+// const max3 = addFourAges(...arr);
+
+// console.log(max3);
+
+
+
+
+
+// const familySmith = ['John', 'Jane', 'Mark'];
+
+// const familyMiller = ['Ann', 'Marry', 'Bob'];
+
+// const bigFamily = [...familySmith, ...familyMiller];
+
+// console.log(bigFamily);
+
+
+// const h = document.querySelector('h1');
+
+// const boxes = document.querySelectorAll('.box');
+
+
+// const all = [h, ...boxes];
+
+// all.forEach(cur => cur.style.color = 'purple')
+
+// console.log(all);
+
+
+
+
+// function isFullAge() {
+//     var arr = Array.from(arguments).map(cur => 2018 - cur);
+//     console.log(arr);
+// }
+
+// isFullAge(18, 1990, 1995, 2005)
+
+
+// function isFullAge(limit, ...years) {
+//     years.forEach(cur => console.log((2018 - cur) >= limit))
+// }
+
+
+// function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
+
+//     lastName === undefined ? lastName = 'Smith' : lastName;
+//     nationality === undefined ? nationality = 'serbian' : nationality;
+//     this.firstName = firstName;
+//     this.yearOfBirth = yearOfBirth;
+//     this.lastName = lastName;
+//     this.nationality = nationality;
+// }
+
+function SmithPerson(firstName, yearOfBirth, lastName = 'Smith', nationality = 'serbian') {
+        this.firstName = firstName;
+        this.yearOfBirth = yearOfBirth;
+        this.lastName = lastName;
+        this.nationality = nationality;
+}
+
+
+
+var john = new SmithPerson('john', 1990);
+var emily = new SmithPerson('john', 1993, 'diaz');
+
+console.log(emily);
+
+console.log(john);
