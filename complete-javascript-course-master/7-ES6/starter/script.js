@@ -255,18 +255,50 @@
 //     this.nationality = nationality;
 // }
 
-function SmithPerson(firstName, yearOfBirth, lastName = 'Smith', nationality = 'serbian') {
-        this.firstName = firstName;
-        this.yearOfBirth = yearOfBirth;
-        this.lastName = lastName;
-        this.nationality = nationality;
+// function SmithPerson(firstName, yearOfBirth, lastName = 'Smith', nationality = 'serbian') {
+//         this.firstName = firstName;
+//         this.yearOfBirth = yearOfBirth;
+//         this.lastName = lastName;
+//         this.nationality = nationality;
+// }
+
+
+
+// var john = new SmithPerson('john', 1990);
+// var emily = new SmithPerson('john', 1993, 'diaz');
+
+// console.log(emily);
+
+// console.log(john);
+
+
+const question = new Map();
+
+question.set('question', 'What is the oficial name of the latest major js version');
+
+
+
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('correct', 3);
+question.set(true, 'Correct answer');
+question.set(false, 'Wrong please try again');
+
+console.log(question.get('question'));
+
+// question.forEach((value, key) => console.log(`This is ${key} and its set to ${value}`))
+
+for(let [key,value] of question.entries()){
+    // console.log(`This is a key ${key} and this is value ${value}`);
+
+    if(typeof(key) === 'number'){
+        console.log(`Answer ${key}: ${value}`)
+    }
 }
 
 
+const answer = parseInt(prompt('The answer is?'));
 
-var john = new SmithPerson('john', 1990);
-var emily = new SmithPerson('john', 1993, 'diaz');
-
-console.log(emily);
-
-console.log(john);
+console.log(question.get(question.get('correct') === answer));
