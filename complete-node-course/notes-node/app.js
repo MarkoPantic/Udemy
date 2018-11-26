@@ -1,5 +1,3 @@
-console.log('Starting app.js');
-
 const fs = require('fs');
 const _ = require('lodash');
 const yargs = require('yargs');
@@ -7,12 +5,39 @@ const yargs = require('yargs');
 const notes = require('./notes.js');
 
 
-const argv = yargs.argv;
+const titleOptions = {
+    describe: 'Title of note',
+    demand: true,
+    alias: 't'
+};
+
+const bodyOptions = {
+    describe: 'The body of the note',
+    demand: true,
+    alias: 'b'
+};
+
+    
+
+const argv = yargs
+    .command('add', 'Add a new note', {
+        title: titleOptions,
+        body: bodyOptions
+    })
+    .command('list', 'Listing all notes')
+    .command('read', 'Reading a single note', {
+        title: titleOptions
+    })
+    .command('remove', 'Removing a note', {
+        title: titleOptions
+    })
+    .help()
+    .argv;
+
+
 var command = argv._[0]
 
 
-
-console.log('comand: ', command);
 
 if (command === 'add') {
 
@@ -26,7 +51,13 @@ if (command === 'add') {
 
 } else if (command === 'list') {
     
-    notes.getAll();
+    var allNotes = notes.getAll();
+    if (allNotes.length >= 1) {
+        console.log(`Printing ${allNotes.length} note(s)`);
+        allNotes.forEach(note => notes.logNote(note));
+    } else {
+        console.log('No notes found');
+    }
 
 } else if (command === 'read') {
     
@@ -45,7 +76,7 @@ if (command === 'add') {
 
     console.log(message);
     
-}else {
+} else {
     console.log('Command not recognized');
 }
 
