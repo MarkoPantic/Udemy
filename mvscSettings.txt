@@ -1,0 +1,50 @@
+"git.enabled": false,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "support.variable.dom",
+                "settings": {
+                    "foreground": "#ffcb6bff"
+                }
+            },
+            {
+                "scope": "meta.brace",
+                "settings": {
+                    "foreground": "#89ddffff"
+                }
+            },
+            {
+                "scope": "support.variable.property",
+                "settings": {
+                    "foreground": "#FF5370"
+                }
+            },
+            {
+                "scope": "support.variable.property.dom",
+                "settings": {
+                    "foreground": "#a6accdff"
+                }
+            },
+            {
+                "scope": "keyword.control.conditional",
+                "settings": {
+                    "foreground": "#C792EA"
+                }
+            },
+            {
+                "scope": "variable.other.constant",
+                "settings": {
+                    "foreground": "#a6accdff"
+                }
+            },
+            {
+                "scope": "keyword.control",
+                "settings": {
+                    "foreground": "#C792EA"
+                }
+            }
+            
+
+            
+        ]
+    },

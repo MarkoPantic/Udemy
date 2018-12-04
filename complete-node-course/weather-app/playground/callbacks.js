@@ -13,12 +13,3 @@ var getUser = (id, callback) => {
 getUser(123, (user) => {
     console.log(user);
 });
-
-
-//var apiKey = 'AIzaSyCas8_v9g452MDlBf4FG9rfKsoO9ARM-Dg';
-
-var firstPart = 'AIzaSyCas8';
-
-var secondPart = '_v9g452MDlBf4FG9rfKsoO9ARM-Dg';
-
-var apiKey = firstPart.concat(secondPart);
