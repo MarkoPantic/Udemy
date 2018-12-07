@@ -8,6 +8,8 @@ it('should square two numbers', () => {
     var res = utils.square(4);
     // if (res != 16) {
     //     throw new Error(`Expected 16 got ${res}`);
+
+    
     // }
 
     expect(res).toBe(16).toBeA('number')
