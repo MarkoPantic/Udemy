@@ -23,6 +23,7 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
     if (maintenance) {
+<<<<<<< HEAD
 
         res.render('maintenance.hbs', {
             title: 'We will be right back',
@@ -33,6 +34,18 @@ app.use((req, res, next) => {
     }
 })
 
+=======
+
+        res.render('maintenance.hbs', {
+            title: 'We will be right back',
+            body: 'See you soon!! pozz'
+        })
+    } else {
+        next();
+    }
+})
+
+>>>>>>> fc36c5296367d851e885fde57409f79828bdafaf
 app.use(express.static(__dirname + '/public'));
 hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
 
@@ -42,7 +55,13 @@ app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'Home Page',
         title: 'Some website',
-        welcomeMessage: 'Welcome all new morons'
+        welcomeMessage: 'Welcome all new morons ffs'
+    })
+})
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects Page'
     })
 })
 
